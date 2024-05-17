@@ -7,7 +7,7 @@
         <div class="action-bar">
           <!-- 表情 -->
           <div class="action-item">
-            <div v-if="emoji.visible" class="emoji-box">
+            <div v-if="emoji.visible" class="emoji-box" ref="emojiBox">
               <img
                 v-for="(emojiItem, emojiKey, index) in emoji.map"
                 class="emoji-item"
@@ -44,7 +44,7 @@
           <label class="placeholder" v-show="zonetext.length === 0">说些什么吧~</label>
         </div>
         <div class="send-box">
-          <el-button type='primary' plain size="small">发送</el-button>
+          <el-button type='primary' plain size="small" @click="postnewZone">发送</el-button>
         </div>
       </div>
       <div class="chatzone-content">
@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import {formatDate} from '../utils/utils.js'
+import {formatDate, formateTime} from '../utils/utils.js'
 import restApi from '../api/restapi';
 import CommentInput from '../components/CommentInput.vue';
 import EmojiDecoder from '../utils/EmojiDecoder';
@@ -99,6 +99,17 @@ export default {
         this.profiles = restApi.findZones();
     },
     methods: {
+        postnewZone() {
+            let user = this.globalData.currentUser;
+            let profile = {
+                userId:user.id,
+                username:user.name,
+                useravatar:user.avatar,
+                text:this.zonetext,
+                time:Date.now(),
+            }
+            restApi.postNewZone(profile);
+        },
         sendTextMessage() {
         if (!this.text.trim()) {
           console.log('输入为空');
@@ -220,6 +231,7 @@ export default {
     width: 100%;
     height: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -249,57 +261,59 @@ export default {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    z-index: 1;
 }
 
 .action-bar {
-display: flex;
-flex-direction: row;
-padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    padding: 0 10px;
+    background: aliceblue;
 }
 
 .action-bar .action-item {
-text-align: left;
-padding: 10px 0;
-position: relative;
+    text-align: left;
+    padding: 10px 0;
+    position: relative;
 }
 
 .action-bar .action-item .iconfont {
-font-size: 22px;
-margin: 0 10px;
-z-index: 3;
-color: #606266;
-cursor: pointer;
+    font-size: 22px;
+    margin: 0 10px;
+    z-index: 3;
+    color: #606266;
+    cursor: pointer;
 }
 
 .action-bar .action-item .iconfont:focus {
-outline: none;
+    outline: none;
 }
 
 .action-bar .action-item .iconfont:hover {
-color: #d02129;
+    color: #d02129;
 }
 
 .emoji-box {
-width: 210px;
-position: absolute;
-top: 11px;
-left: -11px;
-z-index: 2007;
-background: #fff;
-border: 1px solid #ebeef5;
-padding: 12px;
-text-align: justify;
-font-size: 14px;
-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-word-break: break-all;
-border-radius: 4px;
+    width: 210px;
+    position: absolute;
+    top: 11px;
+    left: -11px;
+    z-index: 2007;
+    background: #fff;
+    border: 1px solid #ebeef5;
+    padding: 12px;
+    text-align: justify;
+    font-size: 14px;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    word-break: break-all;
+    border-radius: 4px;
 }
 
 .emoji-item {
-width: 38px;
-height: 38px;
-margin: 0 2px;
+    width: 38px;
+    height: 38px;
+    margin: 0 2px;
 }
 
 .input-box {
@@ -324,6 +338,7 @@ margin: 0 2px;
 .send-box {
     padding: 5px 10px;
     text-align: right;
+    background: #ffffff;
 }
 
 .send-button {

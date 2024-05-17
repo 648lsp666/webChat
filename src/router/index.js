@@ -1,15 +1,15 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import { getLocalStorageItemWithExpiration } from '../utils/utils';
-const Home = () => import('@/views/Home');
-const Login = () => import('@/views/Login');
-const SignUp = () => import('@/views/SignUp');
-const Conversations = () => import('@/views/Conversations');
-const Contacts = () => import('@/views/Contacts');
-const PrivateChat = () => import('@/views/PrivateChat');
-const GroupChat = () => import('@/views/GroupChat');
-const NewChat = () => import('@/views/NewChat');
-const ChatZone = () => import('@/views/ChatZone');
+const Home = () => import('@/views/Home.vue');
+const Login = () => import('@/views/Login.vue');
+const SignUp = () => import('@/views/SignUp.vue');
+const Conversations = () => import('@/views/Conversations.vue');
+const Contacts = () => import('@/views/Contacts.vue');
+const PrivateChat = () => import('@/views/PrivateChat.vue');
+const GroupChat = () => import('@/views/GroupChat.vue');
+const NewChat = () => import('@/views/NewChat.vue');
+const ChatZone = () => import('@/views/ChatZone.vue');
 Vue.use(VueRouter);
 
 const routes = [

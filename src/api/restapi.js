@@ -83,7 +83,6 @@ class RestApi {
             userId: '08c0a6ec-a42b-47b2-bb1e-15e0f5f9a19a',
             username: 'Mattie',
             useravatar: '/static/images/Avatar-1.png',
-            name: 'Zone1',
             text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero amet est perspiciatis nobis impedit dolore nam laborum necessitatibus aliquam illum similique perferendis at ipsa exercitationem sunt enim, saepe modi nulla!',
             time: '2024-03-05 00:00:00',
             likes:[
@@ -177,6 +176,26 @@ class RestApi {
 
     findZones(){
         return this.zones;
+    }
+
+    comment(e){
+
+    }
+
+    postNewZone(profile){
+        const {userId,username,useravatar,text,time} = profile;
+        let newZone = {
+            zoneId: 'zone-a42b-47b2-bb1e-15e0f5f9a19a',
+            userId:userId,
+            username:username,
+            useravatar:useravatar,
+            text:text,
+            time:time,
+            likes:[],
+            comments:[]
+        }
+        this.zones.push(newZone);
+        return ;
     }
 
 }

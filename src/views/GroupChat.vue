@@ -219,7 +219,7 @@
         id: this.group.id,
         data: {name: this.group.name, avatar: this.group.avatar},
       };
-
+      
       this.loadHistoryMessage(true);
 
       this.goEasy.im.on(this.GoEasy.IM_EVENT.GROUP_MESSAGE_RECEIVED, this.onReceivedGroupMessage);
@@ -1063,79 +1063,4 @@
     right: 5px;
     z-index: 1002;
   }
-
-  .order-box {
-    width: 848px;
-    position: absolute;
-    left: -281px;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 2007;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(33, 33, 33, 0.7);
-  }
-
-  .order-list {
-    width: 300px;
-    background: #F1F1F1;
-    border-radius: 5px;
-  }
-
-  .order-list .title {
-    font-weight: 600;
-    font-size: 15px;
-    color: #000000;
-    margin-left: 10px;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .order-list .title span {
-    font-size: 28px;
-    font-weight: 400;
-    cursor: pointer;
-  }
-
-  .order-list .order-item {
-    padding: 10px;
-    background: #FFFFFF;
-    margin: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  .order-list .order-id {
-    font-size: 12px;
-    color: #666666;
-    margin-bottom: 5px;
-  }
-
-  .order-list .order-body {
-    display: flex;
-    font-size: 13px;
-    justify-content: space-between;
-  }
-
-  .order-list .order-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-  }
-
-  .order-list .order-name {
-    width: 160px;
-  }
-
-  .order-list .order-count {
-    font-size: 12px;
-    color: #666666;
-    flex: 1;
-  }
-
 </style>

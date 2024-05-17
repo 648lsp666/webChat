@@ -1,12 +1,14 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router/index';
-import ElementUI from 'element-ui';
-import '@icon-park/vue/styles/index.css'
-import 'element-ui/lib/theme-chalk/index.css';
+import { Message,Button,Input,Empty,MessageBox } from 'element-ui';
 import GoEasy from 'goeasy'
 
-Vue.use(ElementUI);
+Vue.use(Button);
+Vue.use(Input);
+Vue.use(Empty);
+Vue.prototype.$message = Message;
+Vue.prototype.$confirm = MessageBox;
 
 Vue.config.productionTip = false;
 

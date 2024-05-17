@@ -42,7 +42,7 @@
   import restApi from '../api/restapi';
   import { version } from '../../package.json';
   import { PreviewClose,PreviewOpen,Right } from '@icon-park/vue';
-import { setLocalStorageItemWithExpiration } from '../utils/utils';
+  import { setLocalStorageItemWithExpiration } from '../utils/utils';
 
   export default {
     name: 'Login',

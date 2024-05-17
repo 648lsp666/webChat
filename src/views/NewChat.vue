@@ -11,8 +11,7 @@
         </div>
         <div class="search-result">
             <div class="search-result-title" v-if="friends.length">想认识的人</div>
-            <div class="friend-list">
-                
+            <div class="friend-list">  
                 <div
                     v-for="(friend, key) in friends || []" :key="key" class="friend-item"
                     :class="{actived: profile.friend && profile.friend.id === friend.id}"
@@ -113,24 +112,6 @@
           group.userList.map((item) => {
             const info = restApi.findUserById(item);
             this.profile.group.members.push(info);
-          });
-        },
-        privateChat () {
-          this.$router.replace({
-            path: '/conversations/privatechat/'+this.profile.friend.id,
-            query: {
-              name: this.profile.friend.name,
-              avatar: this.profile.friend.avatar
-            }
-          });
-        },
-        groupChat () {
-          this.$router.replace({
-            path: '/conversations/groupchat/'+this.profile.group.id,
-            query: {
-              name: this.profile.group.name,
-              avatar: this.profile.group.avatar
-            }
           });
         },
         search() {
